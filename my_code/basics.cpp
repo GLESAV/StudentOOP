@@ -129,6 +129,7 @@ int sum2(int n) {
 	for (size_t i = 0; i < n; ++i)
 	{
 		sum += i;
+		
 	}
 	return sum;
 }
