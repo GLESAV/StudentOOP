@@ -31,7 +31,7 @@ void inc_pass_ref(int& j) {
  * */
 void fill_vector(vector<int>& v, int n) {
 
-	for (size_t i = 1; i < n+1; ++i)
+	for (int i = 1; i < n+1; ++i)
 	{
 		v.push_back(i);
 	}
@@ -126,10 +126,9 @@ int sum(int n) {
  * */
 int sum2(int n) {
 	int sum = 0;
-	for (size_t i = 0; i < n; ++i)
+	for (int i = 0; i < n; ++i)
 	{
 		sum += i;
-		
 	}
 	return sum;
 }
