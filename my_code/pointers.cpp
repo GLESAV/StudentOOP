@@ -64,6 +64,7 @@ void assignTA(Student* s, Student* ta) {
 }
 
 
+
 void printTAs(vector<Student*>& students) {
 	
 	for (Student* stud: students)

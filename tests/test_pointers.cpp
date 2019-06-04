@@ -41,6 +41,7 @@ int main() {
     printTAs(students);
 
 
+
     // now let's make, print, change, and delete some "things":
     Thing** things = create_array_of_things(NUM_THINGS);
     // assert(things != nullptr);
