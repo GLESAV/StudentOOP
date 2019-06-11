@@ -30,7 +30,7 @@ std::ostream& operator<<(std::ostream& os, const Weather& w){
 // }
 std::ostream& operator<<(std::ostream& os, const WReading& wr)
 {
-	os << wr.date << "Temperature: " << wr.temperature << " Humidity " << wr.humidity << " Windspeed: " << wr.windspeed << " ";
+	os << wr.date << "Temperature: " << wr.temperature << " Humidity: " << wr.humidity << " Windspeed: " << wr.windspeed << " ";
 	return os;
 }
 
@@ -42,7 +42,36 @@ WReading::WReading(Date dt, double temp, double hum, double ws) :
 	date(dt), temperature(temp), humidity(hum), windspeed(ws){}
 
 
-
+/*
+	double WReading::get_tempF() const
+	{
+		return temp;
+	}
+	double WReading::get_tempC(double raw=temp) const
+	{
+		return (raw-32)*(5/9)
+	}
+	double WReading::get_heat_index(double raw=temp) const
+	{
+		double c_1 = -42.379;
+		double c_2 = 2.04901523*raw;
+		double c_3 = 10.14333127*humidity;
+		double c_4 = -0.22475541*raw*humidity;
+		double c_5 = -6.83783*(10^-3)*(raw^2);
+		double c_6 = -5.481717*(10^-2)*(humidity^2);
+		double c_7 = 1.22874*(10^-3)*(raw*2)*(humidity);
+		double c_8 = 8.5282*(10^-4)*raw*(humidity^2);
+		double c_9 = -1.99*(10^-6)*(humidity^2)(raw^2);
+		
+		return c_1+c_2+c_3+c_4+c_5+c_6+c_7+c_8+c_9;
+		
+		
+		
+		
+	}
+	double WReading::get_wind_chill(int fahrenheit_flag) const;
+	double WReading::get_wind_chill() const;
+*/
 
 //Weather methods
 int Weather::get_rating() const{

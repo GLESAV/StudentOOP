@@ -6,6 +6,9 @@
 #include "date.h"
 
 
+class Date;
+
+
 struct GPS {
     double latitude;
     double longitude;
@@ -31,6 +34,16 @@ class WReading {
     friend std::ostream& operator<<(std::ostream& os, const WReading& wr);
  public:
     WReading(Date dt, double temp, double hum, double ws);
+
+
+/*
+	double get_tempF() const;
+	double get_tempC(double raw=temp) const;
+	double get_heat_index(double raw) const;
+	double get_wind_chill(int fahrenheit_flag) const;
+	double get_wind_chill() const;
+	
+	*/
 
  private:
     Date date;
