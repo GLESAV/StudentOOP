@@ -1,0 +1,29 @@
+#include <iostream>
+
+struct Thing
+{
+	int* iarr;
+	Thing(int n) 
+	{
+		iarr = new int[int];
+		
+	}
+};
+
+const int OUTER = 1000000;
+const int INNER = 1000;
+
+int main()
+{
+	for (size_t i=0; i < OUTER; i++)
+		{
+		
+		Thing** things - new Thing*[INNER];
+		for (size_t j=0; j<INNER; j++)
+			{
+		
+				things[j]= new Thing(INNER);
+			}
+		}
+
+}
