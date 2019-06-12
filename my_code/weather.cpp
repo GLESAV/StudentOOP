@@ -6,6 +6,79 @@
 
 using namespace std;
 
+
+Image::Image(int w, int h, std::string flnm)
+    : width(w), height(h)
+{
+    filename = flnm;
+    image_buf = new char[image_sz()];
+}
+
+
+void Image::copy_fields(const Image& img2) {
+	width=img2.width;
+	height=img2.height;
+	filename=img2.filename;
+	
+	image_buf= new char( width*height  );
+	
+	for (int i=0;i <(width*height);++i)
+	{
+		image_buf[i]=img2.image_buf[i];
+	}
+}
+
+Image::Image(const Image& img2) {
+
+	this->copy_fields(img2);
+	
+	
+}
+
+Image::~Image() {
+	if (image_buf)
+	{
+	delete[] image_buf;
+	}
+}
+
+ Image& Image::operator=(const Image& img2) {
+	 
+	 if (&img2!=this)
+	 {
+		delete []image_buf;
+		this->copy_fields(img2);
+
+		return *this;		
+	 }
+	 else
+	 {
+		return *this;
+	 }
+}
+
+int Image::image_sz() {
+    return width * height;
+}
+
+
+
+string Image::display(std::string s) {
+    return "Displaying image " + s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Output operators
 std::ostream& operator<<(std::ostream& os, const GPS& gps){
 	os << "Lat:  " << gps.latitude 
@@ -41,6 +114,11 @@ Weather::Weather(std::string nm, GPS loc): station_nm(nm), my_loc(loc){}
 WReading::WReading(Date dt, double temp, double hum, double ws) :
 	date(dt), temperature(temp), humidity(hum), windspeed(ws){}
 
+double WReading::get_tempF() const
+{
+	return temperature;
+}
+
 
 /*
 	double WReading::get_tempF() const
@@ -72,6 +150,7 @@ WReading::WReading(Date dt, double temp, double hum, double ws) :
 	double WReading::get_wind_chill(int fahrenheit_flag) const;
 	double WReading::get_wind_chill() const;
 */
+
 
 //Weather methods
 int Weather::get_rating() const{

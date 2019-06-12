@@ -118,7 +118,6 @@ Complex& Complex::operator-=(const Complex& rhs)
 
 Complex operator+(const Complex& c1,const Complex& c2) 
 {
-	
 	Complex sum(c1.get_real(),c1.get_imag());
 	sum+=c2;
 	return sum;

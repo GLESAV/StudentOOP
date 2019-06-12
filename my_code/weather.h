@@ -8,6 +8,29 @@
 
 class Date;
 
+class Image {
+ public:
+    Image(int w, int h, std::string flnm);
+    Image(const Image& img2);
+    ~Image();
+	
+	
+    Image& operator=(const Image& img2);
+    int image_sz();
+    std::string display(std::string s);
+    int get_height() { return height; }
+    int get_width() { return width; }
+
+ private:
+    int width;
+    int height;
+    std::string filename;
+    char* image_buf;
+    void copy_fields(const Image& img2);
+};
+
+
+
 
 struct GPS {
     double latitude;
@@ -34,6 +57,7 @@ class WReading {
     friend std::ostream& operator<<(std::ostream& os, const WReading& wr);
  public:
     WReading(Date dt, double temp, double hum, double ws);
+	double get_tempF() const;
 
 
 /*

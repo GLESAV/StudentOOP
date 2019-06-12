@@ -12,17 +12,23 @@ class Complex {
 
  public:
     Complex(double real=0.0, double imag=0.0);
-    explicit operator bool() const;
-    double get_real() const;
+    
+	explicit operator bool() const;
+    
+	double get_real() const;
     double get_imag() const;
 	
     Complex& operator++();
+	Complex& operator--();
+		
 	Complex& operator+=(const Complex& rhs);
 	Complex& operator-=(const Complex& rhs);
-    Complex operator++(int dummy);
-    Complex& operator--();
+
+    
+	Complex operator++(int dummy);
     Complex operator--(int dummy);
-    Complex operator*(const int i);
+    
+	Complex operator*(const int i);
 
  private:
     double real;
