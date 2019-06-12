@@ -6,11 +6,24 @@
 using namespace std;
 
 bool operator== (const Complex& c1, const Complex& c2) {
-	if (c1.get_real()==c2.get_real() &&
-	c1.get_imag()==c2.get_imag())
-		{return true;}
-	else
-		{return false;}
+
+
+	return (
+	(c1.get_real()==c2.get_real())
+
+	&& (c1.get_imag()==c2.get_imag())
+	
+	);
+
+	// if (c1.get_real()==c2.get_real() &&
+	// c1.get_imag()==c2.get_imag())
+		// {return true;}
+	// else
+		// {return false;}
+
+
+
+
 }
 bool operator!= (const Complex& c1, const Complex& c2)
 {
@@ -52,14 +65,12 @@ istream& operator>> (istream& is, Complex& c) {
 
 
  Complex::operator bool() const {
-	 if(real!=0)
-		{
-		 return true;
-		 }
- else
-	{
-	 return false;
-	 }
+	 
+	 
+		return //(real!=0);
+		
+		((real!=0)||(imag!=0));
+	 
  }
 
 Complex& Complex::operator++() {
@@ -92,23 +103,23 @@ Complex Complex::operator--(int dummy)
 
 Complex& Complex::operator+=(const Complex& rhs)
 {
-	real=real+rhs.get_real();
-	imag=imag+rhs.get_imag();
+	real+=rhs.get_real();
+	imag+=rhs.get_imag();
 	
 	return *this;
 }
 Complex& Complex::operator-=(const Complex& rhs)
 {
-	real=real-rhs.get_real();
-	imag=imag-rhs.get_imag();
+	real-=rhs.get_real();
+	imag-=rhs.get_imag();
 	
 	return *this;
 }
 
 Complex operator+(const Complex& c1,const Complex& c2) 
 {
-	Complex sum;
-	sum+=c1;
+	
+	Complex sum(c1.get_real(),c1.get_imag());
 	sum+=c2;
 	return sum;
 }
