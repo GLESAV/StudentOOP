@@ -38,6 +38,6 @@ class Complex {
 bool operator== (const Complex& c1, const Complex& c);
 bool operator!= (const Complex& c1, const Complex& c);
 
-Complex operator+(const Complex& c1,const Complex& c);
+Complex operator+(const Complex& c1,const Complex& c);Complex operator-(const Complex& c1,const Complex& c);
 
 #endif

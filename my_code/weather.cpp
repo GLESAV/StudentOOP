@@ -28,18 +28,18 @@ void Image::copy_fields(const Image& img2) {
 	}
 }
 
-Image::Image(const Image& img2) {
-
-	this->copy_fields(img2);
-	
-	
-}
 
 Image::~Image() {
 	if (image_buf)
 	{
 	delete[] image_buf;
 	}
+}
+Image::Image(const Image& img2) {
+
+	this->copy_fields(img2);
+	
+	
 }
 
  Image& Image::operator=(const Image& img2) {
