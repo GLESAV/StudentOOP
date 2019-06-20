@@ -63,14 +63,42 @@ int Image::image_sz() {
 
 
 
-string Image::display(std::string s) {
-    return "Displaying image " + s;
+
+string Jpeg::display() const
+{cout << "I am a Jpeg";
+return "I am a Jpeg";}
+string Gif::display() const
+{cout << "I am a Gif";
+return "I am a Gif";}
+string Png::display() const
+{cout << "I am a Png";
+return "I am a Png";}
+
+void Weather::display_images() const
+{
+	cout << "IN DISPLAY\n";
+	for (WReading wr: wreadings)
+	{
+		wr.call_image();
+	}
 }
 
 
+string Image::display() const
+{
+	cout << "I am an image";
+	return "I am an image";
+}
 
+void WReading::call_image() const
+{
+	cout << "DISPLAYING\n";
+	imag_coll->display();
+	cout << "DISPLAYED\n";
+}
 
-
+// std::string Image::display_images(std::string s)
+// {}
 
 
 
@@ -111,8 +139,8 @@ std::ostream& operator<<(std::ostream& os, const WReading& wr)
 //Constructors
 Weather::Weather(std::string nm, GPS loc): station_nm(nm), my_loc(loc){}
 // Date::Date(int d, int m, int y): day(d), month(m),year(y){}
-WReading::WReading(Date dt, double temp, double hum, double ws) :
-	date(dt), temperature(temp), humidity(hum), windspeed(ws){}
+WReading::WReading(Date dt, double temp, double hum, double ws,Image* imag_coll) :
+	date(dt), temperature(temp), humidity(hum), windspeed(ws),imag_coll(imag_coll){}
 
 double WReading::get_tempF() const
 {

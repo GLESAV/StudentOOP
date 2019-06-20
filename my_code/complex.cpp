@@ -116,6 +116,7 @@ Complex& Complex::operator-=(const Complex& rhs)
 	return *this;
 }
 
+
 Complex operator+(const Complex& c1,const Complex& c2) 
 {
 	Complex sum(c1.get_real(),c1.get_imag());
@@ -131,6 +132,7 @@ Complex operator-(const Complex& c1,const Complex& c2)
 	return sum;
 	
 }
+
 
 double Complex::get_real() const 
 {
