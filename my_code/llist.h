@@ -45,7 +45,8 @@ Node* duplicate(Node* head);
 /*
  * Reverse the list: return a brand new list with everything reversed.
  * */
-Node* reverse(Node* curr, Node* chain_node=nullptr);
+ 
+Node* reverse(Node* curr, Node* new_node=nullptr);
 
 /*
  * Join two lists: tack list 2 onto the end of list 1:

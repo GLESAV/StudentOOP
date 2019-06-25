@@ -36,6 +36,22 @@ MyVec::MyVec():data(new int[10]),sz(0),capacity(10) {
 cout << "Default Constructor Called"<< endl;
 }
 
+MyVec::MyVec(int sz, int val):data(new int[sz]),sz(0),capacity(sz*2) {
+	
+	
+	for (int i=0;i<sz;i++)
+	{
+		data[i]=val;
+	}
+	
+	
+cout << "Constructor w sz of vals para Called"<< endl;
+}
+
+
+
+
+
 MyVec::MyVec(const MyVec& v2) {
 	data = new int[v2.capacity];
 	sz = v2.sz;
@@ -57,17 +73,11 @@ MyVec& MyVec::operator=(const MyVec& v2) {
 }
 
 
-/*
- * == is true when every element of the vectors are the same in
- * the same order. (Thus they must be the same size.)
- * */
+
 bool operator==(MyVec& v1, MyVec& v2) {
     return true;
 }
 
-/*
- * Puts an element at the back of a vector.
- * */
 void MyVec::push_back(int val) {
 	if(sz==capacity) //NO space,copy old values
 	{
@@ -86,20 +96,35 @@ void MyVec::push_back(int val) {
 	data[sz]=val;
 	++sz;
 }
-
-/*
- * this [] is for reading items from the MyVec:
- * It returns the i-th element.
- * */
 int MyVec::operator[](int i) const {
     return data[i];
 }
 
-/*
- * this [] allows write access to items in the MyVec:
- * It returns a reference to the i-th element.
- * */
 int& MyVec::operator[](int i) {
     
     return data[i];
 }
+
+
+
+
+MyVec::Iterator MyVec::begin() const {
+	cout << "Iterator begin called" << endl;
+	MyVec::Iterator begin_it = (&data[0]);
+    return begin_it;
+}
+
+MyVec::Iterator MyVec::end() const {
+	cout << "Iterator end called" << endl;
+    return MyVec::Iterator(nullptr);
+}
+
+
+bool operator!=(MyVec::Iterator& rhs, MyVec::Iterator& lhs) {
+	
+                return (rhs.iptr==lhs.iptr);
+            }
+			
+			
+
+int MyVec::Iterator::operator*() { return *iptr; }
