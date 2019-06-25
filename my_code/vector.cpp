@@ -36,7 +36,7 @@ MyVec::MyVec():data(new int[10]),sz(0),capacity(10) {
 cout << "Default Constructor Called"<< endl;
 }
 
-MyVec::MyVec(int sz, int val):data(new int[sz]),sz(0),capacity(sz*2) {
+MyVec::MyVec(int sz, int val):data(new int[sz]),sz(sz),capacity(sz*2) {
 	
 	
 	for (int i=0;i<sz;i++)
@@ -110,21 +110,32 @@ int& MyVec::operator[](int i) {
 
 MyVec::Iterator MyVec::begin() const {
 	cout << "Iterator begin called" << endl;
-	MyVec::Iterator begin_it = (&data[0]);
+	MyVec::Iterator begin_it = (data);
     return begin_it;
 }
 
 MyVec::Iterator MyVec::end() const {
 	cout << "Iterator end called" << endl;
-    return MyVec::Iterator(nullptr);
+    return MyVec::Iterator(data+sz);
 }
 
 
 bool operator!=(MyVec::Iterator& rhs, MyVec::Iterator& lhs) {
 	
-                return (rhs.iptr==lhs.iptr);
+                return (rhs.iptr!=lhs.iptr);
             }
 			
 			
 
 int MyVec::Iterator::operator*() { return *iptr; }
+
+
+MyVec::Iterator::Iterator(int* ip): iptr(ip) {
+			std::cout << "Iterator construted" << std::endl;
+		};
+MyVec::Iterator& MyVec::Iterator::operator++()
+			{
+				iptr++;
+				return *this;
+			}
+

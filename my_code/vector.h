@@ -20,15 +20,9 @@ class MyVec {
             friend bool operator!=(Iterator& rhs, Iterator& lhs);
 
         public:
-		Iterator (int* ip): iptr(ip) {
-			std::cout << "Iterator construted" << std::endl;
-		};
+		Iterator (int* ip);
 
-            Iterator& operator++()
-			{
-				iptr++;
-				return *this;
-			}
+            Iterator& operator++();
 
             int operator*();
 
