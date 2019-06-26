@@ -37,7 +37,7 @@ $(TEST_DIR)/test_llist: $(STUDENT_DIR)/llist.cpp $(TEST_DIR)/test_llist.cpp
 
 test_tvector: $(TEST_DIR)/test_tvector
 
-$(TEST_DIR)/test_tvector: $(STUDENT_DIR)/tvector.h $(TEST_DIR)/test_tvector.cpp
+$(TEST_DIR)/test_tvector: $(TEST_DIR)/test_tvector.cpp
 
 
 
