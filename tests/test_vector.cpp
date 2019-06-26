@@ -49,9 +49,9 @@ int main() {
     for (int i : v4) {
 	assert(i == 20);}
 	
+
 	
-	
-	cout << "THIS IS THE END" << endl;
+	cout << "THIS IS THE END OF VECTOR TESTING" << endl;
 	
 	
 	
