@@ -43,7 +43,7 @@ void print(string name, const CLASS& a_class)
 	
 	
 	//this doesn't work....
-	// for (CLASS::const_iterator iter=a_class.begin(); iter!=a_class.end();++iter)
+	// for (const auto& iter=a_class.begin(); iter!=a_class.end();++iter)
 	// {
 		// cout << *iter << "\t";
 	// }
