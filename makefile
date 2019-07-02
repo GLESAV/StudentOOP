@@ -64,7 +64,7 @@ tests: test_hello test_basics test_pointers test_complex test_weather test_vecto
 	tests/test_stl
 	tests/test_bst
 	tests/test_functors
-
+	tests/test_bst
 prod: tests
 	- git commit -a -m "new assignment done"
 	git push origin master

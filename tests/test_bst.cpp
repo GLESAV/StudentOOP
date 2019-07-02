@@ -44,13 +44,13 @@ int main() {
     assert(result->get_val() == 45);
     result = iroot->search(95);
     assert(result == nullptr);
-
+  
     Bst<int>* pred45 = iroot->predecessor(45);
     assert(pred45->get_val() == 40);
     Bst<int>* succ45 = iroot->successor(45);
     assert(succ45->get_val() == 50);
-    
-         
+        
+               
     Bst<string>* sroot = new Bst<string>("Ellie");
     assert(sroot->get_val() == "Ellie");
     print_bst(*sroot);

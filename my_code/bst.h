@@ -94,7 +94,7 @@ class Bst {
 
 		Bst<T>* min_node()
 		{
-			if (!left)
+			if (left==nullptr)
 			{
 				
 				//cout << "min is : " << data << endl;
@@ -255,28 +255,33 @@ class Bst {
 			}
 		}
 		
-
+//successor_rec and predecessor_rec are the "right way" of doing what i did; however, I could not implement them as there was a seg fault. the previous versions that i hard coded is one solution.
 
 		Bst<T>* successor_rec(T val)
 		{
 			
 			Bst<T>* key = search(val);
-			
+			cout << "search complete" << endl;
 			if (key==nullptr)
 			{
 				cerr<< "no such value" << endl;
 				exit(2);
 			}
-			
+			cout << "THIS IS KEY " << key->get_val() << endl;
+			 cout << "THIS IS KEY left " << key->left << endl;
+			//cout << "THIS IS KEY right " << key->right->get_val() << endl;
 			if (key->right!=nullptr)
 			{
+				cout<< "there is a larger node" << endl;
 				return ((key->right)->min_node());
 			}
 			else
 			{
+				cout << "I must be a left node" << endl;
 				Bst<T>* parent_node=key->parent;
 				
-				while (parent_node!=nullptr&&parent_node->data>val)
+				while (parent_node!=nullptr
+				&&((parent_node->data)>val))
 				{
 					parent_node=parent_node->parent;
 				}
