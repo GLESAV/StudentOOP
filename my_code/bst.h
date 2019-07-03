@@ -224,11 +224,12 @@ class Bst {
 			
 			if (key->left!=nullptr)
 			{
+				cout << "there is a smaller node" << endl;
 				return ((key->left)->max_node());
 			}
 			else
 			{
-				cout << "value is a min. check the parents now" << endl;
+				cout << "no smaller node. check the parents now" << endl;
 				
 				while (key->parent!=nullptr&&key->parent->data>val)
 				{
