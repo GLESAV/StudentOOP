@@ -139,11 +139,11 @@ int main() {
 			cerr << e.what() << endl;
 		
 		}
-		catch (int negative)
+	catch (int negative)
 		{
 			cerr << "invalid input" << negative << " cannot be processed by fib" << endl;
 		}
-		catch (...)
+	catch (...)
 		{
 			cerr << "Something is wrong" << endl;
 		}
