@@ -2,7 +2,7 @@
 #include <iostream>
 #include <functional>
 #include <cmath>
-
+#include <exception>
 
 
 
@@ -20,12 +20,32 @@ class Sin {
 
 
 //EXCEPTION for negative number
+class NoNegative: public exception{
+	public: 
+	NoNegative(int n):negNum(n){}
+	
+
+	private:
+		virtual const char* what() const throw(){
+		return "Invalid input. No Negative Numbers";
+	}
+	
+	int negNum;
+};
+
 class Fib {
     public:
         Fib() {}
 
         long long int operator()(long long int n) {
-            if (n==0)
+			if (n<0)
+			{
+				
+				NoNegative myexception(n);
+				//throw n;
+				throw myexception;
+			}
+			if (n==0)
 			{return 0;}
 		else if (n==1)
 			{return 1;}
@@ -40,7 +60,8 @@ class Fib {
 			return current;
 		}
 	
-			
+		
+		
 			
 			// if (n <= 1) return 1;
             // else return operator()(n - 1) + operator()(n - 2);
@@ -97,7 +118,7 @@ int main() {
 	//about half a dozen practice lambdas
 	// three with square and three with whatever
 	cout << "\n\n\n\n\n";
-    const long long int FIB_NUM = 80;
+    const long long int FIB_NUM = -80;
 
     // first functors:
     Sin sine = Sin();
@@ -106,8 +127,25 @@ int main() {
     d = sine(0);
     cout << "sin 0 == " << d << endl;
     Fib fib = Fib();
-    long long int f = fib(FIB_NUM);
+    
+	try{
+		long long int f = fib(FIB_NUM);
     cout << "fib(" << FIB_NUM << ") == " << f << endl;
+		
+		}
+	catch (exception& e)
+		{
+			cerr << e.what() << endl;
+		
+		}
+		catch (int negative)
+		{
+			cerr << "invalid input" << negative << " cannot be processed by fib" << endl;
+		}
+		catch (...)
+		{
+			cerr << "Something is wrong" << endl;
+		}
 
     // then lambdas -- use several functions from cmath here:
     d = square_func(0, [](double arg) { return sin(arg); });

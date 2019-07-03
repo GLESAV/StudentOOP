@@ -215,7 +215,7 @@ class Bst {
 		{
 			
 			Bst<T>* key = search(val);
-
+			cout << "Search complete" << endl;
 			if (key==nullptr)
 			{
 				cerr<< "no such value" << endl;

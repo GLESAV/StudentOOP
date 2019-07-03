@@ -54,6 +54,7 @@ int main() {
     assert(sroot->get_val() == "Ellie");
     print_bst(*sroot);
 	
+	
     sroot->insert("Daniel");
     sroot->insert("Raj");
     print_bst(*sroot);
