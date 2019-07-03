@@ -18,6 +18,8 @@ class Sin {
         }
 };
 
+
+//EXCEPTION for negative number
 class Fib {
     public:
         Fib() {}

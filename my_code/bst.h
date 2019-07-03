@@ -36,6 +36,13 @@ class Bst {
     public:
         Bst(T d, Bst* p=nullptr, Bst* l=nullptr, Bst* r=nullptr)
             : data(d), parent(p), left(l), right(r) {}
+			
+			
+					
+        T get_val() const {
+            return data;
+        }
+
 
         Bst<T>* insert(const T& d) {
 			cout << "insert called" << endl;
@@ -159,144 +166,56 @@ class Bst {
 			
 		}
 
+		// Bst<T>* predecessor(T val)
+		// {
+			
+			// Bst<T>* key = search(val);
+			
+			// if (key==nullptr)
+			// {
+				// cerr<< "no such value" << endl;
+				// exit(2);
+			// }
+			// Bst<T>* run_down = key->left;
+			// if (run_down!=nullptr)
+			// {
+				// while (run_down->right!=nullptr)
+				// {
+					// run_down=run_down->right;
+				// }
+				// if (run_down!=nullptr)
+				// {
+					// return (run_down);
+				// }
+			// }
+			// Bst<T>* run_up = key;
+			// while (run_up->parent!= nullptr && run_up->parent->data>val)
+			// {
+				// run_up=run_up->parent;
+			// }
+			// if (run_up->parent!=nullptr)
+			// {
+				// if (run_up->parent->data<val)
+					
+				// {return run_up->parent;}
+			// }
+	
+			// if (run_up->data< val)
+			// {
+				// return run_up;
+			// }
+			// else
+			// {
+				// cerr << "value is a min, no such pred" << endl;
+				// exit (3);
+			// }
+		// }
+		
 		Bst<T>* predecessor(T val)
 		{
 			
 			Bst<T>* key = search(val);
-			
-			if (key==nullptr)
-			{
-				cerr<< "no such value" << endl;
-				exit(2);
-			}
-			
-			
-			Bst<T>* run_down = key->left;
-			if (run_down!=nullptr)
-			{
-				while (run_down->right!=nullptr)
-				{
-					run_down=run_down->right;
-				}
-				if (run_down!=nullptr)
-				{
-					return (run_down);
-				}
-			}
-			Bst<T>* run_up = key;
-			while (run_up->parent!= nullptr && run_up->parent->data>val)
-			{
-				run_up=run_up->parent;
-			}
-			if (run_up->parent!=nullptr)
-			{
-				if (run_up->parent->data<val)
-					
-				{return run_up->parent;}
-			}
-	
-			if (run_up->data< val)
-			{
-				return run_up;
-			}
-			else
-			{
-				cerr << "value is a min, no such pred" << endl;
-				exit (3);
-			}
-		}
-		
 
-
-
-
-		Bst<T>* successor(T val)
-		{
-			
-			Bst<T>* key = search(val);
-			
-			if (key==nullptr)
-			{
-				cerr<< "no such value" << endl;
-				exit(2);
-			}
-			
-			Bst<T>* run_down = key->right;
-			if (run_down!=nullptr)
-			{
-				while (run_down->left!=nullptr)
-				{
-					run_down=run_down->left;
-				}
-				if (run_down!=nullptr)
-				{
-					return (run_down);
-				}
-			}
-			Bst<T>* run_up = key;
-			while (run_up->parent!= nullptr && run_up->parent->data<val)
-			{
-				run_up=run_up->parent;
-			}
-			if (run_up->parent!=nullptr)
-			{
-				if (run_up->parent->data>val)
-					
-				{return run_up->parent;}
-			}
-			if (run_up->data> val)
-			{
-				return run_up;
-			}
-			else
-			{
-				cerr << "value is a max, no such succ" << endl;
-				exit (3);
-			}
-		}
-		
-//successor_rec and predecessor_rec are the "right way" of doing what i did; however, I could not implement them as there was a seg fault. the previous versions that i hard coded is one solution.
-
-		Bst<T>* successor_rec(T val)
-		{
-			
-			Bst<T>* key = search(val);
-			cout << "search complete" << endl;
-			if (key==nullptr)
-			{
-				cerr<< "no such value" << endl;
-				exit(2);
-			}
-			cout << "THIS IS KEY " << key->get_val() << endl;
-			 cout << "THIS IS KEY left " << key->left << endl;
-			//cout << "THIS IS KEY right " << key->right->get_val() << endl;
-			if (key->right!=nullptr)
-			{
-				cout<< "there is a larger node" << endl;
-				return ((key->right)->min_node());
-			}
-			else
-			{
-				cout << "I must be a left node" << endl;
-				Bst<T>* parent_node=key->parent;
-				
-				while (parent_node!=nullptr
-				&&((parent_node->data)>val))
-				{
-					parent_node=parent_node->parent;
-				}
-				return parent;
-			}
-		}
-		
-
-
-
-		Bst<T>* predecessor_rec(T val)
-		{
-			
-			Bst<T>* key = search(val);
-			
 			if (key==nullptr)
 			{
 				cerr<< "no such value" << endl;
@@ -309,20 +228,131 @@ class Bst {
 			}
 			else
 			{
-				Bst<T>* parent_node=key->parent;
-				while (parent_node!=nullptr&&parent_node->data<val)
+				cout << "value is a min. check the parents now" << endl;
+				
+				while (key->parent!=nullptr&&key->parent->data>val)
 				{
-					parent_node=parent_node->parent;
+					key=key->parent;
 				}
-				return parent;
+			if (key->parent!=nullptr)
+			{
+				if (key->parent->data<val)
+					
+				{return key->parent;}
+			}
+	
+			if (key->data< val)
+			{
+				return key;
+			}
+			else
+			{
+				cerr << "value is a min, no such pred" << endl;
+				exit (3);
+			}	
+				
+				
+			}
+		}
+
+
+
+
+		// Bst<T>* successor(T val)
+		// {
+			
+			// Bst<T>* key = search(val);
+			
+			// if (key==nullptr)
+			// {
+				// cerr<< "no such value" << endl;
+				// exit(2);
+			// }
+			
+			// Bst<T>* run_down = key->right;
+			// if (run_down!=nullptr)
+			// {
+				// while (run_down->left!=nullptr)
+				// {
+					// run_down=run_down->left;
+				// }
+				// if (run_down!=nullptr)
+				// {
+					// return (run_down);
+				// }
+			// }
+			// Bst<T>* run_up = key;
+			// while (run_up->parent!= nullptr && run_up->parent->data<val)
+			// {
+				// run_up=run_up->parent;
+			// }
+			// if (run_up->parent!=nullptr)
+			// {
+				// if (run_up->parent->data>val)
+					
+				// {return run_up->parent;}
+			// }
+			// if (run_up->data> val)
+			// {
+				// return run_up;
+			// }
+			// else
+			// {
+				// cerr << "value is a max, no such succ" << endl;
+				// exit (3);
+			// }
+		// }
+		
+//successor_rec and predecessor_rec are FIXED
+
+		Bst<T>* successor(T val)
+		{
+			
+			Bst<T>* key = search(val);
+			cout << "search complete" << endl;
+			if (key==nullptr)
+			{
+				cerr<< "no such value" << endl;
+				exit(2);
+			}
+			 
+			//cout << "THIS IS KEY right " << key->right->get_val() << endl;
+			if (key->right!=nullptr)
+			{
+				cout<< "there is a larger node" << endl;
+				return ((key->right)->min_node());
+			}
+			else
+			{
+				cout << "I must be a left node; check parents" << endl;
+
+			while (key->parent!= nullptr && key->parent->data<val)
+			{
+				key=key->parent;
+			}
+			if (key->parent!=nullptr)
+			{
+				if (key->parent->data>val)
+					
+				{return key->parent;}
+			}
+			if (key->data> val)
+			{
+				return key;
+			}
+			else
+			{
+				cerr << "value is a max, no such succ" << endl;
+				exit (3);
+			}
 			}
 		}
 		
 
+
+
 		
-        T get_val() const {
-            return data;
-        }
+
 
     private:
         T data;
