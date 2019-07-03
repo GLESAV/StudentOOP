@@ -53,15 +53,15 @@ $(TEST_DIR)/test_functors: $(TEST_DIR)/test_functors.cpp
 
 tests: test_hello test_basics test_pointers test_complex test_weather test_vector test_llist test_tvector test_stl test_bst test_functors
 
-	tests/test_hello
-	tests/test_basics
-	tests/test_pointers
-	tests/test_complex
-	tests/test_weather
-	tests/test_vector
-	tests/test_llist
-	tests/test_tvector
-	tests/test_stl
+	# tests/test_hello
+	# tests/test_basics
+	# tests/test_pointers
+	# tests/test_complex
+	# tests/test_weather
+	# tests/test_vector
+	# tests/test_llist
+	# tests/test_tvector
+	# tests/test_stl
 	tests/test_bst
 	tests/test_functors
 prod: tests
